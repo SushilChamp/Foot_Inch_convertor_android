@@ -10,12 +10,23 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+
 public class MainActivity extends AppCompatActivity {
     EditText numA;
     EditText numB;
     EditText numC1;
     EditText numC2;
     EditText numD;
+
+    EditText numAx;
+    EditText numBx;
+    EditText numC1x;
+    EditText numC2x;
+    EditText numDx;
+
     Button butconvert1;
     Button butconvert2;
     TextView resultadd;
@@ -24,25 +35,37 @@ public class MainActivity extends AppCompatActivity {
     TextView resultfeet3;
     TextView resultfeet4;
     CheckBox circum;
+    AdView myAd1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        MobileAds.initialize(this, "ca-app-pub-3940256099942544~3347511713");       //Test app id     --     unit id in xml file only
+        myAd1 = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        myAd1.loadAd(adRequest);
 
-        numA=(EditText) findViewById(R.id.numA);
-        numB= (EditText) findViewById(R.id.numB);
-        numC1= (EditText) findViewById(R.id.numC1);
-        numC2= (EditText) findViewById(R.id.numC2);
-        numD= (EditText) findViewById(R.id.numD);
-        butconvert1= (Button) findViewById(R.id.butconvert1);
-        butconvert2= (Button) findViewById(R.id.butconvert2);
-        circum = (CheckBox)findViewById(R.id.circum);
-        resultadd= (TextView) findViewById(R.id.resultadd);
-        resultfeet1=(TextView) findViewById(R.id.resultfeet1);
-        resultfeet2= (TextView) findViewById(R.id.resultfeet2);
-        resultfeet3= (TextView) findViewById(R.id.resultfeet3);
-        resultfeet4= (TextView) findViewById(R.id.resultfeet4);
+        numA= findViewById(R.id.ftoin_feet1);
+        numB= findViewById(R.id.ftoin_inch1);
+        numC1= findViewById(R.id.ftoin_frac1);
+        numC2= findViewById(R.id.ftoin_frac2);
+        numD= findViewById(R.id.total_inch1);
+
+        numAx= findViewById(R.id.ftoin_feet2);
+        numBx= findViewById(R.id.ftoin_inch2);
+        numC1x= findViewById(R.id.ftoin_frac3);
+        numC2x= findViewById(R.id.ftoin_frac4);
+        numDx= findViewById(R.id.total_inch2);
+
+        butconvert1= findViewById(R.id.button_1);
+        butconvert2= findViewById(R.id.button_2);
+        circum = findViewById(R.id.circum);
+        resultadd= findViewById(R.id.result_1);
+        resultfeet1= findViewById(R.id.result_21);
+        resultfeet2= findViewById(R.id.result_22);
+        resultfeet3= findViewById(R.id.result_23);
+        resultfeet4= findViewById(R.id.result_24);
 
         butconvert1.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -53,6 +76,12 @@ public class MainActivity extends AppCompatActivity {
                 String num23 = numC1.getText().toString();
                 String num24 = numC2.getText().toString();
 
+                String num26 = numAx.getText().toString();
+                String num27 = numBx.getText().toString();
+                String num28 = numC1x.getText().toString();
+                String num29 = numC2x.getText().toString();
+
+
                 if(!num21.isEmpty() || !num22.isEmpty() || !num23.isEmpty() || !num24.isEmpty()){
 
                     int num1 = 0;
@@ -60,21 +89,27 @@ public class MainActivity extends AppCompatActivity {
                     int num3 = 0;
                     int num4 = 1;
 
+                    int num1x = 0;
+                    int num2x = 0;
+                    int num3x = 0;
+                    int num4x = 1;
+
                     if(!num21.isEmpty()){num1 = Integer.parseInt(num21);}
                     if(!num22.isEmpty()){num2 = Integer.parseInt(num22);}
                     if(!num23.isEmpty()){num3 = Integer.parseInt(num23);}
                     if(!num24.isEmpty()){num4 = Integer.parseInt(num24);}
 
+                    if(!num26.isEmpty()){num1x = Integer.parseInt(num21);}
+                    if(!num27.isEmpty()){num2x = Integer.parseInt(num22);}
+                    if(!num28.isEmpty()){num3x = Integer.parseInt(num23);}
+                    if(!num29.isEmpty()){num4x = Integer.parseInt(num24);}
+
                     if(num4 == 0){num4 =1;}
                     Toast.makeText(getApplicationContext(),"Converted",Toast.LENGTH_LONG).show();
-                    float num5 = num1*12+num2+(float)num3/num4;
+                    float num5 = num1*12+num2+(float)num3/num4  +   num1x*12+num2x+(float)num3x/num4x;
                     resultadd.setText(num5 + " in");
 
                 }else{Toast.makeText(getApplicationContext(),"Please, fill at least one box!",Toast.LENGTH_LONG).show();}
-
-                //if(!num21.isEmpty() && !num22.isEmpty() && !num23.isEmpty() && !num24.isEmpty()){
-                //  int num1 = Integer.parseInt(num21);
-                //  int num1 = Integer.parseInt(numA.getText().toString());
             }
         });
 
@@ -83,12 +118,16 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 String num20 = numD.getText().toString();
-                if(!num20.isEmpty()){
+                String num25 = numDx.getText().toString();
 
+                if(!num20.isEmpty()){
                     Toast.makeText(getApplicationContext(),"Converted",Toast.LENGTH_LONG).show();
-                    float num6 = Float.parseFloat(num20);
+                    float num6x = 0;
+                    if(!num25.isEmpty()){num6x = Float.parseFloat(num25);}
+                    float num6 = Float.parseFloat(num20) + num6x;
+
                     if(circum.isChecked()){
-                        num6 = num6*22/7;}
+                        num6 = (float) (num6*Math.PI);}
 
                     int num7 = (int) num6/12;
                     int num8 = (int) num6-num7*12;
@@ -109,7 +148,7 @@ public class MainActivity extends AppCompatActivity {
 
                     resultfeet1.setText(num7 + "");
                     resultfeet2.setText(num8 + "");
-                    resultfeet3.setText((int)num10 + "      /");
+                    resultfeet3.setText((int)num10 + "     /");
                     resultfeet4.setText(num11 + "");
 
                 }else {

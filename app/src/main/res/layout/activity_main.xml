@@ -1,273 +1,497 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+
+
+
+
+    <com.google.android.gms.ads.AdView
+        xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adView"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        ads:adSize="BANNER"
+        ads:adUnitId="ca-app-pub-3940256099942544/6300978111">
+    </com.google.android.gms.ads.AdView>
+
+
+
+
+
     <View
-        android:id="@+id/divider2"
-        android:layout_width="400dp"
+        android:id="@+id/divider1"
+        android:layout_width="wrap_content"
         android:layout_height="5dp"
         android:background="#3F51B5"
-        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        android:layout_below="@id/adView"
+        app:layout_constraintTop_toBottomOf="@+id/adView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/butconvert1" />
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+
+
 
     <TextView
-        android:id="@+id/resultfeet4"
-        android:layout_width="75dp"
-        android:layout_height="40dp"
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:text="Frac2"
-        android:textAlignment="center"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/resultfeet3"
-        app:layout_constraintTop_toBottomOf="@+id/numD"
-        android:gravity="center_horizontal" />
-
-    <EditText
-        android:id="@+id/numA"
-        android:layout_width="75dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:ems="10"
-        android:hint="Foot"
-        android:inputType="number"
-        app:layout_constraintEnd_toStartOf="@+id/numB"
+        android:text="Convert Feet-inch into total inch"
+        android:textColor="#009688"
+        android:textSize="12sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        android:layout_below="@id/divider1" />
 
-    <EditText
-        android:id="@+id/numB"
-        android:layout_width="75dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:ems="10"
-        android:hint="Inch"
-        android:inputType="number"
-        app:layout_constraintEnd_toStartOf="@+id/numC1"
-        app:layout_constraintStart_toEndOf="@+id/numA"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
-    <Button
-        android:id="@+id/butconvert2"
-        style="buttonStyle"
-        android:layout_width="150dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:background="#6ECBD7"
-        android:text="Convert"
-        android:textAlignment="center"
-        android:textSize="24sp"
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_below="@id/textView1"
+        android:orientation="horizontal"
+        android:id="@+id/linearlayout_1">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            android:id="@+id/constraint_1">
+
+            <EditText
+                android:id="@+id/ftoin_feet1"
+                android:layout_width="40dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/border"
+                android:ems="10"
+                android:hint="Ft"
+                android:inputType="number"
+                android:textAlignment="center"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <EditText
+                android:id="@+id/ftoin_inch1"
+                android:layout_width="40dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="2dp"
+                android:background="@drawable/border"
+                android:ems="10"
+                android:hint="In"
+                android:inputType="number"
+                android:textAlignment="center"
+                app:layout_constraintStart_toEndOf="@+id/ftoin_feet1"
+                app:layout_constraintTop_toTopOf="@+id/ftoin_feet1"/>
+
+            <EditText
+                android:id="@+id/ftoin_frac1"
+                android:layout_width="40dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="2dp"
+                android:background="@drawable/border"
+                android:ems="10"
+                android:hint="Fr1"
+                android:inputType="number"
+                android:textAlignment="center"
+                app:layout_constraintStart_toEndOf="@+id/ftoin_inch1"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <EditText
+                android:id="@+id/ftoin_frac2"
+                android:layout_width="40dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="2dp"
+                android:background="@drawable/border"
+                android:ems="10"
+                android:hint="Fr2"
+                android:inputType="number"
+                android:textAlignment="center"
+                app:layout_constraintStart_toEndOf="@+id/ftoin_inch1"
+                app:layout_constraintTop_toBottomOf="@+id/ftoin_frac1"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+        <TextView
+            android:id="@+id/operator_1"
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="*"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:background="@drawable/border"
+            android:textSize="16sp"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="15dp"
+            android:id="@+id/constraint_2">
+
+            <EditText
+                android:id="@+id/ftoin_feet2"
+                android:layout_width="40dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/border"
+                android:ems="10"
+                android:hint="Ft"
+                android:inputType="number"
+                android:textAlignment="center"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <EditText
+                android:id="@+id/ftoin_inch2"
+                android:layout_width="40dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="2dp"
+                android:background="@drawable/border"
+                android:ems="10"
+                android:hint="In"
+                android:inputType="number"
+                android:textAlignment="center"
+                app:layout_constraintStart_toEndOf="@+id/ftoin_feet2"
+                app:layout_constraintTop_toTopOf="@+id/ftoin_feet2"/>
+
+            <EditText
+                android:id="@+id/ftoin_frac3"
+                android:layout_width="40dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="2dp"
+                android:background="@drawable/border"
+                android:ems="10"
+                android:hint="Fr1"
+                android:inputType="number"
+                android:textAlignment="center"
+                app:layout_constraintStart_toEndOf="@+id/ftoin_inch2"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <EditText
+                android:id="@+id/ftoin_frac4"
+                android:layout_width="40dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="2dp"
+                android:background="@drawable/border"
+                android:ems="10"
+                android:hint="Fr2"
+                android:inputType="number"
+                android:textAlignment="center"
+                app:layout_constraintStart_toEndOf="@+id/ftoin_inch2"
+                app:layout_constraintTop_toBottomOf="@+id/ftoin_frac3"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_below="@id/linearlayout_1"
+        android:orientation="horizontal"
+        android:id="@+id/linearlayout_2">
+
+        <Button
+            android:id="@+id/button_1"
+            style="buttonStyle"
+            android:layout_width="80dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/border_button"
+            android:gravity="center_horizontal"
+            android:text="Convert"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/result_1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/result_1"
+            android:layout_width="75dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/border"
+            android:gravity="center_horizontal"
+            android:text="Total inch"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@+id/button_1"
+            app:layout_constraintTop_toTopOf="@id/button_1"
+            app:layout_constraintBottom_toBottomOf="@id/button_1" />
+    </LinearLayout>
+
+
+
+
+
+
+    <View
+        android:id="@+id/divider2"
+        android:layout_width="wrap_content"
+        android:layout_height="5dp"
+        android:background="#3F51B5"
+        android:layout_below="@id/linearlayout_2"
+        app:layout_constraintTop_toBottomOf="@+id/adView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/numD"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
-        android:gravity="center_horizontal" />
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
-        android:id="@+id/butconvert1"
-        style="buttonStyle"
-        android:layout_width="150dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:background="#8000BCD4"
-        android:text="Convert"
-        android:textAlignment="center"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toStartOf="@+id/resultadd"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/numA"
-        android:gravity="center_horizontal" />
 
-    <TextView
-        android:id="@+id/resultadd"
-        android:layout_width="175dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:text="Total inch"
-        android:textAlignment="center"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/butconvert1"
-        app:layout_constraintTop_toBottomOf="@+id/numC1"
-        android:gravity="center_horizontal" />
 
-    <EditText
-        android:id="@+id/numC2"
-        android:layout_width="75dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:ems="10"
-        android:hint="Frac2"
-        android:inputType="number|numberDecimal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/numC1"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
-    <EditText
-        android:id="@+id/numD"
-        android:layout_width="175dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:ems="10"
-        android:hint="Total inches"
-        android:inputType="numberDecimal"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toStartOf="@+id/butconvert2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
-        android:gravity="center_horizontal" />
-
-    <EditText
-        android:id="@+id/numC1"
-        android:layout_width="75dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:ems="10"
-        android:hint="Frac1"
-        android:inputType="numberDecimal"
-        app:layout_constraintEnd_toStartOf="@+id/numC2"
-        app:layout_constraintStart_toEndOf="@+id/numB"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
-        android:layout_height="30dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="8dp"
         android:text="Convert total inch into Feet-inch"
-        android:textAlignment="center"
         android:textColor="#009688"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="12sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/butconvert1"
-        android:gravity="center_horizontal" />
+        android:layout_below="@id/divider2" />
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
+
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="30dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:text="Convert feet-inch into total inch"
-        android:textColor="#009688"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_below="@id/textView2"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal"
+        android:id="@+id/linearlayout_3">
 
-    <TextView
-        android:id="@+id/resultfeet1"
-        android:layout_width="75dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:text="Feet"
-        android:textAlignment="center"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toStartOf="@+id/resultfeet2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/numD"
-        android:gravity="center_horizontal" />
+        <Button
+            android:id="@+id/button_2"
+            style="buttonStyle"
+            android:layout_width="80dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/border_button"
+            android:gravity="center_horizontal"
+            android:text="Convert"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/resultfeet3"
-        android:layout_width="75dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:text="Frac1"
-        android:textAlignment="center"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toStartOf="@+id/resultfeet4"
-        app:layout_constraintStart_toEndOf="@+id/resultfeet2"
-        app:layout_constraintTop_toBottomOf="@+id/numD"
-        android:gravity="center_horizontal" />
+        <EditText
+            android:id="@+id/total_inch1"
+            android:layout_width="75dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/border"
+            android:ems="10"
+            android:gravity="center_horizontal"
+            android:hint="Total In."
+            android:inputType="numberDecimal"
+            android:textAlignment="center"
+            app:layout_constraintStart_toEndOf="@+id/button_2"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/resultfeet2"
-        android:layout_width="75dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:text="Inch"
-        android:textAlignment="center"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toStartOf="@+id/resultfeet3"
-        app:layout_constraintStart_toEndOf="@+id/resultfeet1"
-        app:layout_constraintTop_toBottomOf="@+id/numD"
-        android:gravity="center_horizontal" />
+        <TextView
+            android:id="@+id/operator_2"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="15dp"
+            android:text="*"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:background="@drawable/border"
+            android:textSize="16sp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/total_inch1"/>
+
+        <EditText
+            android:id="@+id/total_inch2"
+            android:layout_width="75dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="15dp"
+            android:background="@drawable/border"
+            android:ems="10"
+            android:gravity="center_horizontal"
+            android:hint="Total In."
+            android:inputType="numberDecimal"
+            android:textAlignment="center"
+            app:layout_constraintStart_toEndOf="@+id/operator_2"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </LinearLayout>
+
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_below="@id/linearlayout_3"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal"
+        android:id="@+id/linearlayout_4">
+
+        <TextView
+            android:id="@+id/result_21"
+            android:layout_width="40dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/border"
+            android:gravity="center_horizontal"
+            android:text="Feet"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/result_22"
+            android:layout_width="40dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="2dp"
+            android:background="@drawable/border"
+            android:gravity="center_horizontal"
+            android:text="Inch"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@+id/result_21"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/result_23"
+            android:layout_width="50dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="2dp"
+            android:background="@drawable/border"
+            android:gravity="center_horizontal"
+            android:text="Fr1   /"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@+id/result_22"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/result_24"
+            android:layout_width="30dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="2dp"
+            android:background="@drawable/border"
+            android:gravity="center_horizontal"
+            android:text="Fr2"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@+id/result_23"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </LinearLayout>
+
+
+
+
+
 
     <CheckBox
         android:id="@+id/circum"
         android:layout_width="wrap_content"
         android:layout_height="15dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="5dp"
         android:text="Circumferential length"
+        android:layout_below="@id/linearlayout_4"
         android:textColor="#E91E63"
         android:textSize="12sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+
+
+
+    <View
+        android:id="@+id/divider3"
+        android:layout_width="wrap_content"
+        android:layout_height="5dp"
+        android:layout_marginTop="5dp"
+        android:background="#3F51B5"
+        android:layout_below="@id/circum"
+        app:layout_constraintTop_toBottomOf="@+id/circum"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/butconvert1"
-        app:layout_constraintTop_toBottomOf="@+id/resultfeet3" />
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Designer: S. Chapai"
-        android:textAllCaps="false"
-        android:textColor="#3F51B5"
-        android:textSize="12sp"
-        android:textStyle="bold|italic"
-        android:typeface="serif"
-        app:layout_constraintStart_toStartOf="@+id/textView5"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Version: C.4.07.20.19"
-        android:textAllCaps="false"
-        android:textColor="#3F51B5"
-        android:textSize="12sp"
-        android:textStyle="bold|italic"
-        android:typeface="serif"
-        app:layout_constraintStart_toStartOf="@+id/textView4"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="24dp"
-        android:text="This is a simple calculator designed for making easy and quick conversion between feet-inch."
-        android:textAllCaps="false"
-        android:textColor="#3F51B5"
-        android:textSize="12sp"
-        android:textStyle="bold|italic"
-        android:typeface="serif"
-        app:layout_constraintEnd_toEndOf="@+id/resultfeet4"
-        app:layout_constraintStart_toStartOf="@+id/resultfeet1"
-        app:layout_constraintTop_toBottomOf="@+id/circum" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_below="@id/divider3"
+            android:text="This is a simple calculator designed for making easy and quick conversion between feet-inch."
+            android:textColor="#3F51B5"
+            android:textSize="12sp"
+            android:textStyle="bold|italic"
+            android:typeface="serif" />
+
+
+
+
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_below="@+id/textView4"
+            android:text="Version: C.4.07.20.19"
+            android:textAllCaps="false"
+            android:textColor="#3F51B5"
+            android:textSize="12sp"
+            android:textStyle="bold|italic"
+            android:typeface="serif" />
+
+
+
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_below="@id/textView5"
+            android:text="Designer: S. Chapai"
+            android:textAllCaps="false"
+            android:textColor="#3F51B5"
+            android:textSize="12sp"
+            android:textStyle="bold|italic"
+            android:typeface="serif" />
+
+</RelativeLayout>
